@@ -1,0 +1,512 @@
+model$Installs <- round(log10(model$Installs), digits = 0)
+model <- read.csv('clean.csv', encoding = "UTF-8")
+model <- model[, -c(1, 2, 7 , 9, 10, 11, 12)]
+model <- model[model$Reviews <= 2000000,]
+quantile(model$Installs, probs = seq(0,1,1/10))
+min_threshold=quantile(model$Installs,0.05)
+max_threshold=quantile(model$Installs,0.95)
+model <- model[model$Installs > min_threshold & model$Installs < max_threshold,]
+model <- model[model$Reviews >= model$Installs*10/100,]
+model <- read.csv('clean.csv', encoding = "UTF-8")
+model <- model[, -c(1, 2, 7 , 9, 10, 11, 12)]
+model <- model[model$Reviews <= 2000000,]
+quantile(model$Installs, probs = seq(0,1,1/10))
+min_threshold=quantile(model$Installs,0.05)
+max_threshold=quantile(model$Installs,0.95)
+model <- model[model$Installs > min_threshold & model$Installs < max_threshold,]
+model <- model[model$Reviews < model$Installs*10/100,]
+write.csv(model, "model.csv", row.names = FALSE)
+runApp('web.R')
+model <- read.csv('clean.csv', encoding = "UTF-8")
+model <- model[, -c(1, 2, 7 , 9, 10, 11, 12)]
+model <- model[model$Reviews <= 2000000,]
+quantile(model$Installs, probs = seq(0,1,1/10))
+min_threshold=quantile(model$Installs,0.05)
+max_threshold=quantile(model$Installs,0.95)
+model <- model[model$Installs > min_threshold & model$Installs < max_threshold,]
+model <- model[model$Reviews < model$Installs*11/100,]
+write.csv(model, "model.csv", row.names = FALSE)
+runApp('web.R')
+model <- read.csv('clean.csv', encoding = "UTF-8")
+model <- model[, -c(1, 2, 7 , 9, 10, 11, 12)]
+model <- model[model$Reviews <= 2000000,]
+quantile(model$Installs, probs = seq(0,1,1/10))
+min_threshold=quantile(model$Installs,0.05)
+max_threshold=quantile(model$Installs,0.95)
+model <- model[model$Installs > min_threshold & model$Installs < max_threshold,]
+model <- model[model$Reviews < model$Installs*9/100,]
+write.csv(model, "model.csv", row.names = FALSE)
+runApp('web.R')
+model <- read.csv('clean.csv', encoding = "UTF-8")
+model <- model[, -c(1, 2, 7 , 9, 10, 11, 12)]
+model <- model[model$Reviews <= 2000000,]
+quantile(model$Installs, probs = seq(0,1,1/10))
+min_threshold=quantile(model$Installs,0.05)
+max_threshold=quantile(model$Installs,0.95)
+model <- model[model$Installs > min_threshold & model$Installs < max_threshold,]
+model <- model[model$Reviews < model$Installs*8/100,]
+write.csv(model, "model.csv", row.names = FALSE)
+runApp('web.R')
+model <- read.csv('clean.csv', encoding = "UTF-8")
+model <- model[, -c(1, 2, 7 , 9, 10, 11, 12)]
+model <- model[model$Reviews <= 2000000,]
+quantile(model$Installs, probs = seq(0,1,1/10))
+min_threshold=quantile(model$Installs,0.05)
+max_threshold=quantile(model$Installs,0.95)
+model <- model[model$Installs > min_threshold & model$Installs < max_threshold,]
+model <- model[model$Reviews < model$Installs*15/100,]
+write.csv(model, "model.csv", row.names = FALSE)
+runApp('web.R')
+corr1 <- cor.test(model$Reviews, model$Installs, method="pearson")
+corr1
+linearModel <- lm(Reviews ~ Installs , data = model)
+linearModel
+model <- read.csv('clean.csv', encoding = "UTF-8")
+model <- model[, -c(1, 2, 7 , 9, 10, 11, 12)]
+model <- model[model$Reviews <= 2000000,]
+quantile(model$Installs, probs = seq(0,1,1/10))
+min_threshold=quantile(model$Installs,0.05)
+max_threshold=quantile(model$Installs,0.95)
+model <- model[model$Installs > min_threshold & model$Installs < max_threshold,]
+model <- model[model$Reviews < model$Installs*10/100,]
+write.csv(model, "model.csv", row.names = FALSE)
+runApp('web.R')
+corr1 <- cor.test(model$Reviews, model$Installs, method="pearson")
+corr1
+linearModel <- lm(Reviews ~ Installs , data = model)
+linearModel
+fitted(linearModel)
+resid(linearModel)
+datten <- par(mfrow= c(2,2))
+plot(linearModel)
+summary(linearModel)
+model$Reviews <- round(log2(model$Reviews), digits = 0)
+model$Installs <- round(log2(model$Installs), digits = 0)
+corr1 <- cor.test(model$Reviews, model$Installs, method="pearson")
+corr1
+linearModel <- lm(Reviews ~ Installs , data = model)
+linearModel
+fitted(linearModel)
+resid(linearModel)
+datten <- par(mfrow= c(2,2))
+plot(linearModel)
+fitted(linearModel)
+resid(linearModel)
+datten <- par(mfrow= c(2,2))
+plot(linearModel)
+model <- read.csv('clean.csv', encoding = "UTF-8")
+model <- model[, -c(1, 2, 7 , 9, 10, 11, 12)]
+model <- model[model$Reviews <= 2000000,]
+quantile(model$Installs, probs = seq(0,1,1/10))
+min_threshold=quantile(model$Installs,0.05)
+max_threshold=quantile(model$Installs,0.95)
+model <- model[model$Installs > min_threshold & model$Installs < max_threshold,]
+model <- model[model$Reviews < model$Installs*10/100,]
+model$Reviews <- round(log1p(model$Reviews), digits = 0)
+model$Installs <- round(log1p(model$Installs), digits = 0)
+corr1 <- cor.test(model$Reviews, model$Installs, method="pearson")
+corr1
+linearModel <- lm(Reviews ~ Installs , data = model)
+linearModel
+fitted(linearModel)
+resid(linearModel)
+datten <- par(mfrow= c(2,2))
+plot(linearModel)
+model <- read.csv('clean.csv', encoding = "UTF-8")
+model <- model[, -c(1, 2, 7 , 9, 10, 11, 12)]
+model$Reviews <- round(log1p(model$Reviews), digits = 0)
+model$Installs <- round(log1p(model$Installs), digits = 0)
+linearModel <- lm(Reviews ~ Installs , data = model)
+linearModel
+fitted(linearModel)
+resid(linearModel)
+datten <- par(mfrow= c(2,2))
+plot(linearModel)
+write.csv(model, "model.csv", row.names = FALSE)
+runApp('web.R')
+model <- read.csv('clean.csv', encoding = "UTF-8")
+model <- model[, -c(1, 2, 7 , 9, 10, 11, 12)]
+model <- model[model$Reviews <= 2000000,]
+quantile(model$Installs, probs = seq(0,1,1/10))
+min_threshold=quantile(model$Installs,0.05)
+max_threshold=quantile(model$Installs,0.95)
+model <- model[model$Installs > min_threshold & model$Installs < max_threshold,]
+model <- read.csv('clean.csv', encoding = "UTF-8")
+model <- model[, -c(1, 2, 7 , 9, 10, 11, 12)]
+model <- model[model$Reviews <= 2000000,]
+quantile(model$Installs, probs = seq(0,1,1/10))
+model <- read.csv('clean.csv', encoding = "UTF-8")
+model <- model[, -c(1, 2, 7 , 9, 10, 11, 12)]
+model <- model[model$Reviews <= 2000000,]
+quantile(model$Installs, probs = seq(0,1,1/10))
+min_threshold=quantile(model$Installs,0.05)
+max_threshold=quantile(model$Installs,0.90)
+model <- model[model$Installs > min_threshold & model$Installs < max_threshold,]
+write.csv(model, "model.csv", row.names = FALSE)
+runApp('web.R')
+model <- read.csv('clean.csv', encoding = "UTF-8")
+model <- model[, -c(1, 2, 7 , 9, 10, 11, 12)]
+model <- model[model$Reviews <= 2000000,]
+quantile(model$Installs, probs = seq(0,1,1/10))
+min_threshold=quantile(model$Installs,0.05)
+max_threshold=quantile(model$Installs,0.90)
+model <- model[model$Installs > min_threshold & model$Installs < max_threshold,]
+linearModel <- lm(Reviews ~ Installs , data = model)
+linearModel
+fitted(linearModel)
+resid(linearModel)
+datten <- par(mfrow= c(2,2))
+plot(linearModel)
+summary(linearModel)
+pair(model)
+corr <- round(cor(model, method = "pearson"), digits = 2)
+melt <- melt(corr)
+corr
+img7 <- ggplot(data = melt, aes(x = Var1, y = Var2, fill = value)) +
+geom_tile(color = "white") +
+scale_fill_gradient2(
+low = "#438295",
+high = "#C3553A",
+mid = "#F2F2F2",
+midpoint = 0.4,
+limit = c(-0.2, 1),
+space = "Lab",
+name = "Tương quan Pearson"
+) +
+geom_text(aes(Var2, Var1, label = value),
+color = "black",
+size = 4) +
+theme(
+axis.title.x = element_blank(),
+axis.title.y = element_blank(),
+panel.grid.major = element_blank(),
+panel.border = element_blank(),
+panel.background = element_blank(),
+axis.ticks = element_blank(),
+) +
+guides(fill = guide_colorbar(barwidth = 2, barheight = 40))+
+ggtitle("Bảng so sánh sự tương quan giữa các giá trị")
+img7
+model <- read.csv('clean.csv', encoding = "UTF-8")
+model <- model[, -c(1, 2, 7 , 9, 10, 11, 12)]
+corr <- round(cor(model, method = "pearson"), digits = 2)
+melt <- melt(corr)
+corr
+img7 <- ggplot(data = melt, aes(x = Var1, y = Var2, fill = value)) +
+geom_tile(color = "white") +
+scale_fill_gradient2(
+low = "#438295",
+high = "#C3553A",
+mid = "#F2F2F2",
+midpoint = 0.4,
+limit = c(-0.2, 1),
+space = "Lab",
+name = "Tương quan Pearson"
+) +
+geom_text(aes(Var2, Var1, label = value),
+color = "black",
+size = 4) +
+theme(
+axis.title.x = element_blank(),
+axis.title.y = element_blank(),
+panel.grid.major = element_blank(),
+panel.border = element_blank(),
+panel.background = element_blank(),
+axis.ticks = element_blank(),
+) +
+guides(fill = guide_colorbar(barwidth = 2, barheight = 40))+
+ggtitle("Bảng so sánh sự tương quan giữa các giá trị")
+img7
+corr1 <- cor.test(model$Reviews, model$Installs, method="pearson")
+model <- read.csv('clean.csv', encoding = "UTF-8")
+model <- model[, -c(1, 2, 7 , 9, 10, 11, 12)]
+quantile(model$Installs, probs = seq(0,1,1/10))
+min_threshold=quantile(model$Installs,0.05)
+max_threshold=quantile(model$Installs,0.90)
+model <- model[model$Installs > min_threshold & model$Installs < max_threshold,]
+corr <- round(cor(model, method = "pearson"), digits = 2)
+melt <- melt(corr)
+corr
+img7 <- ggplot(data = melt, aes(x = Var1, y = Var2, fill = value)) +
+geom_tile(color = "white") +
+scale_fill_gradient2(
+low = "#438295",
+high = "#C3553A",
+mid = "#F2F2F2",
+midpoint = 0.4,
+limit = c(-0.2, 1),
+space = "Lab",
+name = "Tương quan Pearson"
+) +
+geom_text(aes(Var2, Var1, label = value),
+color = "black",
+size = 4) +
+theme(
+axis.title.x = element_blank(),
+axis.title.y = element_blank(),
+panel.grid.major = element_blank(),
+panel.border = element_blank(),
+panel.background = element_blank(),
+axis.ticks = element_blank(),
+) +
+guides(fill = guide_colorbar(barwidth = 2, barheight = 40))+
+ggtitle("Bảng so sánh sự tương quan giữa các giá trị")
+img7
+linearModel <- lm(model , data = model)
+linearModel
+fitted(linearModel)
+resid(linearModel)
+datten <- par(mfrow= c(2,2))
+plot(linearModel)
+model <- read.csv('clean.csv', encoding = "UTF-8")
+model <- model[, -c(1, 2, 7 , 9, 10, 11, 12)]
+model$Reviews <- round(log1p(model$Reviews), digits = 0)
+model <- read.csv('clean.csv', encoding = "UTF-8")
+model <- model[, -c(1, 2, 7 , 9, 10, 11, 12)]
+corr <- round(cor(model, method = "pearson"), digits = 2)
+melt <- melt(corr)
+corr
+img7 <- ggplot(data = melt, aes(x = Var1, y = Var2, fill = value)) +
+geom_tile(color = "white") +
+scale_fill_gradient2(
+low = "#438295",
+high = "#C3553A",
+mid = "#F2F2F2",
+midpoint = 0.4,
+limit = c(-0.2, 1),
+space = "Lab",
+name = "Tương quan Pearson"
+) +
+geom_text(aes(Var2, Var1, label = value),
+color = "black",
+size = 4) +
+theme(
+axis.title.x = element_blank(),
+axis.title.y = element_blank(),
+panel.grid.major = element_blank(),
+panel.border = element_blank(),
+panel.background = element_blank(),
+axis.ticks = element_blank(),
+) +
+guides(fill = guide_colorbar(barwidth = 2, barheight = 40))+
+ggtitle("Bảng so sánh sự tương quan giữa các giá trị")
+img7
+linearModel <- lm(model , data = model)
+linearModel
+fitted(linearModel)
+resid(linearModel)
+datten <- par(mfrow= c(2,2))
+plot(linearModel)
+runApp('web.R')
+write.csv(model, "model.csv", row.names = FALSE)
+runApp('web.R')
+model <- read.csv('clean.csv', encoding = "UTF-8")
+model <- model[, -c(1, 2, 7 , 9, 10, 11, 12)]
+quantile(model$Installs, probs = seq(0,1,1/10))
+min_threshold=quantile(model$Installs,0.05)
+max_threshold=quantile(model$Installs,0.90)
+model <- model[model$Installs > min_threshold & model$Installs < max_threshold,]
+write.csv(model, "model.csv", row.names = FALSE)
+runApp('web.R')
+linearModel <- lm(model , data = model)
+linearModel
+fitted(linearModel)
+resid(linearModel)
+datten <- par(mfrow= c(2,2))
+plot(linearModel)
+corr1 <- cor.test(model$Reviews, model$Installs, method="pearson")
+corr1
+linearModel <- lm(Reviews~Installs , data = model)
+linearModel
+fitted(linearModel)
+resid(linearModel)
+datten <- par(mfrow= c(2,2))
+plot(linearModel)
+runApp('web.R')
+model <- read.csv('clean.csv', encoding = "UTF-8")
+model <- model[, -c(1, 2, 7 , 9, 10, 11, 12)]
+quantile(model$Installs, probs = seq(0,1,1/10))
+min_threshold=quantile(model$Installs,0.05)
+max_threshold=quantile(model$Installs,0.90)
+model <- model[model$Installs > min_threshold & model$Installs < max_threshold,]
+model <- model[model$Reviews <= model$Installs*10/100,]
+write.csv(model, "model.csv", row.names = FALSE)
+runApp('web.R')
+img7
+model <- read.csv('clean.csv', encoding = "UTF-8")
+model <- model[, -c(1, 2, 7 , 9, 10, 11, 12)]
+quantile(model$Installs, probs = seq(0,1,1/10))
+min_threshold=quantile(model$Installs,0.05)
+max_threshold=quantile(model$Installs,0.90)
+model <- model[model$Installs > min_threshold & model$Installs < max_threshold,]
+corr <- round(cor(model, method = "pearson"), digits = 2)
+melt <- melt(corr)
+corr
+img7 <- ggplot(data = melt, aes(x = Var1, y = Var2, fill = value)) +
+geom_tile(color = "white") +
+scale_fill_gradient2(
+low = "#438295",
+high = "#C3553A",
+mid = "#F2F2F2",
+midpoint = 0.4,
+limit = c(-0.2, 1),
+space = "Lab",
+name = "Tương quan Pearson"
+) +
+geom_text(aes(Var2, Var1, label = value),
+color = "black",
+size = 4) +
+theme(
+axis.title.x = element_blank(),
+axis.title.y = element_blank(),
+panel.grid.major = element_blank(),
+panel.border = element_blank(),
+panel.background = element_blank(),
+axis.ticks = element_blank(),
+) +
+guides(fill = guide_colorbar(barwidth = 2, barheight = 40))+
+ggtitle("Bảng so sánh sự tương quan giữa các giá trị")
+img7
+write.csv(model, "model.csv", row.names = FALSE)
+runApp('web.R')
+runApp('web.R')
+runApp('web.R')
+runApp('web.R')
+corr1 <- cor.test(model$Reviews, model$Installs, method="pearson")
+corr1
+linearModel <- lm(Reviews~Installs , data = model)
+linearModel
+fitted(linearModel)
+resid(linearModel)
+datten <- par(mfrow= c(2,2))
+plot(linearModel)
+summary(linearModel)
+pair(model)
+plot(linearModel)
+plot(model$Reviews, model$Installs, pch=16, )
+abline(linearModel)
+plot(model$Reviews, model$Installs, pch=16, )
+linearModel
+abline(linearModel)
+model <- read.csv('clean.csv', encoding = "UTF-8")
+model <- read.csv('clean.csv', encoding = "UTF-8")
+model <- model[, -c(1, 2, 7 , 9, 10, 11, 12)]
+quantile(model$Installs, probs = seq(0,1,1/10))
+min_threshold=quantile(model$Installs,0.05)
+max_threshold=quantile(model$Installs,0.90)
+model <- model[model$Installs > min_threshold & model$Installs < max_threshold,]
+linearModel <- lm(Reviews~Installs , data = model)
+linearModel
+plot(model$Reviews, model$Installs )
+abline(linearModel)
+runApp('web.R')
+corr1 <- cor.test(model$Installs, model$Reviews, method="pearson")
+corr1
+linearModel <- lm(Installs~Reviews , data = model)
+linearModel
+fitted(linearModel)
+resid(linearModel)
+datten <- par(mfrow= c(2,2))
+plot(model$Installs, model$Reviews )
+abline(linearModel)
+plot(model$Installs, model$Reviews,pch=16 )
+abline(linearModel)
+runApp('web.R')
+model <- read.csv('clean.csv', encoding = "UTF-8")
+model <- model[, -c(1, 2, 7 , 9, 10, 11, 12)]
+quantile(model$Installs, probs = seq(0,1,1/10))
+min_threshold=quantile(model$Installs,0.05)
+max_threshold=quantile(model$Installs,0.90)
+model <- model[model$Installs > min_threshold & model$Installs < max_threshold,]
+model <- model[model$Reviews > model$Installs*10/100,]
+model <- read.csv('clean.csv', encoding = "UTF-8")
+model <- model[, -c(1, 2, 7 , 9, 10, 11, 12)]
+quantile(model$Installs, probs = seq(0,1,1/10))
+min_threshold=quantile(model$Installs,0.05)
+max_threshold=quantile(model$Installs,0.90)
+model <- model[model$Installs > min_threshold & model$Installs < max_threshold,]
+model <- model[model$Reviews < model$Installs*10/100,]
+linearModel <- lm(Installs~Reviews , data = model)
+linearModel
+fitted(linearModel)
+resid(linearModel)
+datten <- par(mfrow= c(2,2))
+plot(model$Installs, model$Reviews,pch=16 )
+abline(linearModel)
+linearModel
+model <- read.csv('clean.csv', encoding = "UTF-8")
+model <- model[, -c(1, 2, 7 , 9, 10, 11, 12)]
+quantile(model$Installs, probs = seq(0,1,1/10))
+min_threshold=quantile(model$Installs,0.05)
+max_threshold=quantile(model$Installs,0.90)
+model <- model[model$Installs > min_threshold & model$Installs < max_threshold,]
+model <- model[model$Reviews < model$Installs*20/100,]
+model <- read.csv('clean.csv', encoding = "UTF-8")
+model <- model[, -c(1, 2, 7 , 9, 10, 11, 12)]
+quantile(model$Installs, probs = seq(0,1,1/10))
+min_threshold=quantile(model$Installs,0.05)
+max_threshold=quantile(model$Installs,0.90)
+model <- model[model$Installs > min_threshold & model$Installs < max_threshold,]
+model <- model[model$Reviews < model$Installs*5/100,]
+linearModel <- lm(Installs~Reviews , data = model)
+linearModel
+fitted(linearModel)
+resid(linearModel)
+datten <- par(mfrow= c(2,2))
+plot(model$Installs, model$Reviews,pch=16 )
+abline(linearModel)
+model <- read.csv('clean.csv', encoding = "UTF-8")
+model <- model[, -c(1, 2, 7 , 9, 10, 11, 12)]
+quantile(model$Installs, probs = seq(0,1,1/10))
+min_threshold=quantile(model$Installs,0.05)
+max_threshold=quantile(model$Installs,0.90)
+model <- model[model$Installs > min_threshold & model$Installs < max_threshold,]
+model$Installs <- log2(model$Installs)
+model$Reviews <- log2(model$Reviews)
+linearModel <- lm(Installs~Reviews , data = model)
+linearModel
+fitted(linearModel)
+resid(linearModel)
+datten <- par(mfrow= c(2,2))
+plot(model$Installs, model$Reviews,pch=16 )
+abline(linearModel)
+linearModel
+runApp('web.R')
+model <- read.csv('clean.csv', encoding = "UTF-8")
+model <- model[, -c(1, 2, 7 , 9, 10, 11, 12)]
+quantile(model$Installs, probs = seq(0,1,1/10))
+min_threshold=quantile(model$Installs,0.05)
+max_threshold=quantile(model$Installs,0.90)
+model <- model[model$Installs > min_threshold & model$Installs < max_threshold,]
+model$Installs <- log1p(model$Installs)
+model$Reviews <- log1p(model$Reviews)
+corr1 <- cor.test(model$Installs, model$Reviews, method="pearson")
+corr1
+linearModel <- lm(Installs~Reviews , data = model)
+linearModel
+fitted(linearModel)
+resid(linearModel)
+datten <- par(mfrow= c(2,2))
+plot(model$Installs, model$Reviews,pch=16 )
+abline(linearModel)
+model <- read.csv('clean.csv', encoding = "UTF-8")
+model <- model[, -c(1, 2, 7 , 9, 10, 11, 12)]
+quantile(model$Installs, probs = seq(0,1,1/10))
+min_threshold=quantile(model$Installs,0.05)
+max_threshold=quantile(model$Installs,0.90)
+model$Installs <- log1p(model$Installs)
+model$Reviews <- log1p(model$Reviews)
+corr1 <- cor.test(model$Installs, model$Reviews, method="pearson")
+corr1
+linearModel <- lm(Installs~Reviews , data = model)
+linearModel
+fitted(linearModel)
+resid(linearModel)
+datten <- par(mfrow= c(2,2))
+plot(model$Installs, model$Reviews,pch=16 )
+abline(linearModel)
+library(shiny); runApp('web.R')
+runApp('web.R')
+install.packages("shinydashboard")
+library(shiny); runApp('web.R')
+runApp('web.R')
